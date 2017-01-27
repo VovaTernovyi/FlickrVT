@@ -1,8 +1,8 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <!-- activity & fragment themes. -->
+
+    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -16,27 +16,58 @@
         <item name="android:popupMenuStyle">@style/material_popup_menu</item>
     </style>
 
-    <style name="AppTheme.LoginRegister" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/colorPrimary</item>
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="colorControlHighlight">@android:color/white</item>
-        <item name="colorControlActivated">@android:color/white</item>
-        <item name="colorButtonNormal">@color/colorAccent</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:editTextColor">@android:color/white</item>
+    <style name="MyTheme.Translucent" parent="MyTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="AppTheme.Profile" parent="AppTheme">
-        <item name="android:windowBackground">@color/colorDarkGrey</item>
-        <item name="colorButtonNormal">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
+    <!-- photo activity. -->
+
+    <style name="MyTheme.Translucent.Photo" parent="MyTheme.Translucent">
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorPrimary">@android:color/black</item>
+    <!-- photo preview activity. -->
+
+    <style name="MyTheme.Translucent.PhotoPreview" parent="MyTheme.Translucent">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <!-- user activity. -->
+
+    <style name="MyTheme.Translucent.User" parent="MyTheme.Translucent" />
+
+    <!-- me activity. -->
+
+    <style name="MyTheme.Translucent.Me" parent="MyTheme.Translucent" />
+
+    <!-- collection activity. -->
+
+    <style name="MyTheme.Translucent.Collection" parent="MyTheme.Translucent" />
+
+    <!-- settings activity. -->
+
+    <style name="MyTheme.Translucent.Settings" parent="MyTheme.Translucent">
+        <item name="android:alertDialogTheme">@style/MyDialogTheme</item>
+    </style>
+    
+    <!-- common activity theme. -->
+
+    <style name="MyTheme.Translucent.Common" parent="MyTheme.Translucent" />
+
+    <!-- toolbar. -->
+
+    <style name="MyToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">?attr/content_color</item>
+        <item name="android:textColorSecondary">?attr/content_color</item>
+    </style>
+
+    <!-- menu. -->
+
+    <style name="MyPopupMenuTheme" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorBackground">?attr/root_color</item>
+        <item name="android:textColor">?attr/content_color</item>
     </style>
 
     <!-- Text -->
