@@ -22,14 +22,14 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private ArrayList<Photo> mPhotoList;
     private Context mContext;
 
-    public DataAdapter(Context a, ArrayList<Photo> photoList) {
+    public DataAdapter(ArrayList<Photo> photoList) {
         mPhotoList = photoList;
-        this.mContext = a;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row, parent, false);
+        mContext = parent.getContext();
         return new ViewHolder(view);
     }
 

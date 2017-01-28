@@ -10,7 +10,7 @@ import retrofit2.http.Query;
  * Created by vova on 26.01.17.
  */
 
-public interface RequestInterface {
+public interface ApiInterface {
 
     @GET("rest/")
     Observable<PhotosStat> register(@Query("method") String method,
