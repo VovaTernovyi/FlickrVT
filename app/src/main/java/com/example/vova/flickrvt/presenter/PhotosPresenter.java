@@ -3,7 +3,7 @@ package com.example.vova.flickrvt.presenter;
 import com.example.vova.flickrvt.model.Model;
 import com.example.vova.flickrvt.model.ModelImpl;
 import com.example.vova.flickrvt.model.dto.PhotosStat;
-import com.example.vova.flickrvt.view.View;
+import com.example.vova.flickrvt.view.MyView;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -15,14 +15,14 @@ import io.reactivex.disposables.Disposable;
 public class PhotosPresenter implements Presenter {
 
     private Model mModel = new ModelImpl();
-    private View mView;
+    private MyView mMyView;
 
-    public PhotosPresenter(View view) {
-        this.mView = view;
+    public PhotosPresenter(MyView view) {
+        this.mMyView = view;
     }
 
     @Override
-    public void onCreateView(int page) {
+    public void onLoadData(int page) {
 
         mModel.getPhotosStat(page).subscribe(new Observer<PhotosStat>() {
             @Override
@@ -32,12 +32,12 @@ public class PhotosPresenter implements Presenter {
 
             @Override
             public void onNext(PhotosStat value) {
-                mView.showData(value);
+                mMyView.showData(value);
             }
 
             @Override
             public void onError(Throwable e) {
-                mView.showError(e.getLocalizedMessage());
+                mMyView.showError(e.getLocalizedMessage());
             }
 
             @Override
@@ -45,11 +45,6 @@ public class PhotosPresenter implements Presenter {
 
             }
         });
-    }
-
-    @Override
-    public void onClickItem(int position) {
-
     }
 
     @Override

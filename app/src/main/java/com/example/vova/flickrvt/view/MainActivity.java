@@ -1,5 +1,6 @@
 package com.example.vova.flickrvt.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,12 +16,11 @@ import com.example.vova.flickrvt.view.adapters.DataAdapter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View {
-
-    private RecyclerView mRecyclerView;
-    private DataAdapter mAdapter;
+public class MainActivity extends AppCompatActivity implements MyView {
 
     private Presenter mPresenter;
+
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View {
 
         mPresenter = new PhotosPresenter(this);
         initRecyclerView();
-        mPresenter.onCreateView(1);
+        mPresenter.onLoadData(1);
     }
 
     private void initRecyclerView() {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+
     }
 
     @Override
@@ -48,8 +48,16 @@ public class MainActivity extends AppCompatActivity implements View {
     @Override
     public void showData(PhotosStat photosStat) {
         ArrayList<Photo> mPhotoArrayList = new ArrayList<>(photosStat.getPhotos().getPhoto());
-        mAdapter = new DataAdapter(mPhotoArrayList);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(new DataAdapter(mPhotoArrayList, new OnItemClickListener() {
+            @Override
+            public void onItemClick(Photo photo) {
+                Toast.makeText(getApplicationContext(), R.string.item_clicked, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), PhotoActivity.class);
+                intent.putExtra(PhotoActivity.KEY_PHOTO_ACTIVITY_PHOTO, photo);
+                startActivity(intent);
+            }
+        }));
+
     }
 
     @Override

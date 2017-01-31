@@ -5,11 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.vova.flickrvt.R;
+import com.example.vova.flickrvt.common.widgets.FreedomImageView;
 import com.example.vova.flickrvt.model.dto.Photo;
+import com.example.vova.flickrvt.view.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,9 +22,11 @@ import java.util.ArrayList;
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private ArrayList<Photo> mPhotoList;
     private Context mContext;
+    private OnItemClickListener listener;
 
-    public DataAdapter(ArrayList<Photo> photoList) {
-        mPhotoList = photoList;
+    public DataAdapter(ArrayList<Photo> items, OnItemClickListener listener) {
+        this.mPhotoList = items;
+        this.listener = listener;
     }
 
     @Override
@@ -35,11 +38,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTitle.setText(mPhotoList.get(position).getTitle());
-
-        Picasso.with(mContext)
-                .load(mPhotoList.get(position).getUrlZ())
-                .into(holder.mImageView);
+        holder.bind(mPhotoList.get(position), listener);
     }
 
     @Override
@@ -47,15 +46,26 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return mPhotoList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTitle;
-        private ImageView mImageView;
+        private FreedomImageView mImageView;
 
         public ViewHolder(View view) {
             super(view);
             mTitle = (TextView)view.findViewById(R.id.item_photo_title);
-            this.mImageView = (ImageView) itemView.findViewById(R.id.item_photo_image);
+            this.mImageView = (FreedomImageView) itemView.findViewById(R.id.item_photo_image);
+        }
+
+        public void bind(final Photo item, final OnItemClickListener listener) {
+            mTitle.setText(item.getTitle());
+
+            Picasso.with(mContext)
+                    .load(item.getUrlS())
+                    .into(mImageView);
+            itemView.setOnClickListener( (View v) -> {
+                    listener.onItemClick(item);
+            });
         }
     }
 }

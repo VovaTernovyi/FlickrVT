@@ -3,11 +3,13 @@ package com.example.vova.flickrvt.model.dto;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by vova on 26.01.17.
  */
 
-public class Photo {
+public class Photo implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -36,15 +38,15 @@ public class Photo {
     @SerializedName("isfamily")
     @Expose
     private Integer isfamily;
-    @SerializedName("url_z")
+    @SerializedName("url_s")
     @Expose
-    private String urlZ;
-    @SerializedName("height_z")
+    private String urlS;
+    @SerializedName("height_s")
     @Expose
-    private String heightZ;
-    @SerializedName("width_z")
+    private String heightS;
+    @SerializedName("width_s")
     @Expose
-    private String widthZ;
+    private String widthS;
 
     public String getId() {
         return id;
@@ -119,27 +121,27 @@ public class Photo {
     }
 
 
-    public String getUrlZ() {
-        return urlZ;
+    public String getUrlS() {
+        return urlS;
     }
 
-    public void setUrlZ(String urlZ) {
-        this.urlZ = urlZ;
+    public void setUrlS(String urlS) {
+        this.urlS = urlS;
     }
 
-    public String getHeightZ() {
-        return heightZ;
+    public String getHeightS() {
+        return heightS;
     }
 
-    public void setHeightZ(String heightZ) {
-        this.heightZ = heightZ;
+    public void setHeightS(String heightS) {
+        this.heightS = heightS;
     }
 
-    public String getWidthZ() {
-        return widthZ;
+    public String getWidthS() {
+        return widthS;
     }
 
-    public void setWidthZ(String widthZ) {
-        this.widthZ = widthZ;
+    public void setWidthS(String widthS) {
+        this.widthS = widthS;
     }
 }

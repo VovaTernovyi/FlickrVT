@@ -6,9 +6,7 @@ package com.example.vova.flickrvt.presenter;
 
 public interface Presenter {
 
-    void onCreateView(int page);
-
-    void onClickItem(int position);
+    void onLoadData(int page);
 
     void onStop();
 }

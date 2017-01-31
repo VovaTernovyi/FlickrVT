@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="transition_activity_container">activity_container</string>
+    <string name="transition_photo_image">photo_image</string>
+    <string name="transition_photo_background">photo_background</string>
+    <string name="item_clicked">Item Clicked</string>
 </resources>
