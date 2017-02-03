@@ -76,9 +76,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             Picasso.with(mContext)
                     .load(item.getUrlS())
                     .into(mImageView);
-            itemView.setOnClickListener( (View v) -> {
-                    listener.onItemClick(item);
-            });
+            itemView.setOnClickListener( (View v) -> listener.onItemClick(item));
         }
     }
 }
