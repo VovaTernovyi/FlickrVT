@@ -22,11 +22,24 @@ import java.util.ArrayList;
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private ArrayList<Photo> mPhotoList;
     private Context mContext;
-    private OnItemClickListener listener;
+    private OnItemClickListener mListener;
+
+    public DataAdapter(OnItemClickListener listener) {
+        mListener = listener;
+        mPhotoList = new ArrayList<>();
+    }
 
     public DataAdapter(ArrayList<Photo> items, OnItemClickListener listener) {
-        this.mPhotoList = items;
-        this.listener = listener;
+        for (Photo photo : items) {
+            this.mPhotoList.add(photo);
+        }
+        mListener = listener;
+    }
+
+    public void addData(ArrayList<Photo> items) {
+        for (Photo photo : items) {
+            this.mPhotoList.add(photo);
+        }
     }
 
     @Override
@@ -38,7 +51,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(mPhotoList.get(position), listener);
+        holder.bind(mPhotoList.get(position), mListener);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.vova.flickrvt.presenter;
 
+import android.util.Log;
+
 import com.example.vova.flickrvt.model.Model;
 import com.example.vova.flickrvt.model.ModelImpl;
 import com.example.vova.flickrvt.model.dto.PhotosStat;
@@ -33,6 +35,7 @@ public class PhotosPresenter implements Presenter {
             @Override
             public void onNext(PhotosStat value) {
                 mMyView.showData(value);
+                Log.i("PhotosPresenter", "Load page: " + page);
             }
 
             @Override
