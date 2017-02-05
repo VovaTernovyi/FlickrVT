@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.vova.flickrvt.R;
+import com.example.vova.flickrvt.common.views.BasicFragment;
 import com.example.vova.flickrvt.model.dto.Photo;
 import com.example.vova.flickrvt.model.dto.PhotosStat;
 import com.example.vova.flickrvt.presenter.PhotosPresenter;
@@ -19,7 +20,7 @@ import com.example.vova.flickrvt.view.adapters.DataAdapter;
 
 import java.util.ArrayList;
 
-public class PhotosListFragment extends Fragment implements MyView{
+public class PhotosListFragment extends BasicFragment implements MyView{
 
     public static final int PAGE_SIZE = 15;
 
@@ -48,10 +49,6 @@ public class PhotosListFragment extends Fragment implements MyView{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_photos_list, container, false);
-    }
-
-    MainActivity getMainActivity() {
-        return (MainActivity)getActivity();
     }
 
     @Override

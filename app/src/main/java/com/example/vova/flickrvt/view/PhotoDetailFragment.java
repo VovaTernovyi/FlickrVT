@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.vova.flickrvt.R;
+import com.example.vova.flickrvt.common.views.BasicFragment;
 import com.example.vova.flickrvt.common.widgets.FreedomImageView;
 import com.example.vova.flickrvt.model.dto.Photo;
 import com.squareup.picasso.Picasso;
@@ -18,7 +19,7 @@ import com.squareup.picasso.Picasso;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PhotoDetailFragment extends Fragment {
+public class PhotoDetailFragment extends BasicFragment {
 
     public static final String KEY_PHOTO_FRAGMENT_PHOTO = "photo_fragment_photo";
 
@@ -49,7 +50,6 @@ public class PhotoDetailFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
         Bundle bundlePhoto = getArguments();
-
         mPhoto = (Photo) bundlePhoto.get(KEY_PHOTO_FRAGMENT_PHOTO);
 
         mTitle = (TextView) view.findViewById(R.id.activity_photo_title);

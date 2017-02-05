@@ -11,7 +11,6 @@ import com.example.vova.flickrvt.model.dto.Photo;
 
 public class MainActivity extends AppCompatActivity {
 
-    //FrameLayout container;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mPhotosListFragment = new PhotosListFragment();
-        //mPhotosListFragment.getArguments();
 
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -39,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         mPhotoDetailFragment.setArguments(bundle);
 
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.fragment_container, mPhotoDetailFragment, "FragmentPhotoDetail");
+        mFragmentTransaction.replace(R.id.fragment_container, mPhotoDetailFragment, "FragmentPhotoDetail")
+                .addToBackStack(null);
         mFragmentTransaction.commit();
     }
 
